@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PZZK77JD');</script>
+    <!-- End Google Tag Manager -->
     <link rel="stylesheet" href="styles.css">
     <title>LocalMarket - Compra Productos Locales</title>
     <link rel="stylesheet" href="style.css">
     
 </head>
 <body class="background-image">
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZZK77JD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header>
         <nav>
             <a href="#">Inicio</a>
@@ -98,43 +108,45 @@
             islandVisible = !islandVisible;
         });
     </script>
-    <div class="Cookies">
-        <p>¡Hola! 🍪 Utilizamos cookies para asegurarnos de que tengas la mejor experiencia en nuestro sitio web. Al aceptar, nos ayudas a mejorar nuestros servicios y personalizar tu navegación. Puedes conocer más en nuestra <a href="#">Política de Cookies</a>.</p>
-        <p>No te preocupes, no compartimos tus datos y respetamos tu privacidad. Si aceptas, guardaremos una pequeña cookie para recordar tu elección y no volver a molestarte. ¡Gracias por tu confianza! 🧡</p>
-        <button id="btn-aceptar">Aceptar</button>
-        <button id="btn-rechazar">Rechazar</button>
-    </div>
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-            const cookiesBanner = document.querySelector('.Cookies');
-            const btnAceptar = document.getElementById('btn-aceptar');
-            const btnRechazar = document.getElementById('btn-rechazar');
+       <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const botonAceptarCookies = document.getElementById('btn-aceptar');
+            const mostrarAvisoCookies= document.getElementById('cookies');
+            const fondoAvisoCookies= document.getElementById('fondo-aviso-cookies');
+            datalayer = [];
 
-            // Verifica si las cookies ya han sido aceptadas
-            const cookiesAceptadas = getCookie('cookies-aceptadas');
-            if (cookiesAceptadas === 'true') {
-                cookiesBanner.style.display = 'none'; // Oculta el banner
-            } else {
-                cookiesBanner.style.display = 'block'; // Muestra el banner
+            if(!localStorage.getItem('cookies-aceptadas')){
+                mostrarAvisoCookies.classList.add('activo');
+                fondoAvisoCookies.classList.add('activo');
             }
+           
+            botonAceptarCookies.addEventListener('click', () =>{
+            mostrarAvisoCookies.classList.remove('activo');
+            fondoAvisoCookies.classList.remove('activo')
 
-            // Evento para aceptar las cookies
-            btnAceptar.addEventListener('click', () => {
-                setCookie('cookies-aceptadas', 'true', 365); // Establece la cookie
-                cookiesBanner.style.display = 'none'; // Oculta el banner
-            });
+             localStorage.setItem('cookies-aceptadas',true);   
 
-            // Evento para rechazar las cookies
-            btnRechazar.addEventListener('click', () => {
-                setCookie('cookies-aceptadas', 'false', 365); // Establece la cookie
-                cookiesBanner.style.display = 'none'; // Oculta el banner
-            });
-</script>
+             datalayer.push({'event': 'Cookies-Aceptadas'})
+             });
+        });    
+       </script>
+    <div class="cookies-aviso "" id="cookies">
+            <p>¡Hola! 🍪 Utilizamos cookies para asegurarnos de que tengas la mejor experiencia en nuestro sitio web. Al aceptar, nos ayudas a mejorar nuestros servicios y personalizar tu navegación. Puedes conocer más en nuestra <a href="#">Política de Cookies</a>.</p>
+            <p>No te preocupes, no compartimos tus datos y respetamos tu privacidad. Si aceptas, guardaremos una pequeña cookie para recordar tu elección y no volver a molestarte. ¡Gracias por tu confianza! 🧡</p>
+            <button id="btn-aceptar">Aceptar</button>
+            <button id="btn-rechazar">Rechazar</button>
+    </div>
+    <div class="fondo-aviso-cookies " id="fondo-aviso-cookies"></div>
+    
     <footer>
         <p>&copy; 2023 LocalMarket. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
+
+
+
+
 
 
 
