@@ -178,39 +178,33 @@ main {
     cursor: pointer;
     z-index: 1001; /* Asegura que esté sobre la isla flotante */
 }
-
 /*Estilo del contenedo de las cookies*/
-.Cookies{
+.cookies-aviso {
     display: none;
-    background-color: #2ee07b;
+    background: #47db02;
     padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
+    
+    max-width: 100%;
+    line-height: 150%;
+    border-radius: 10px;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 20px auto;
-    max-width: 80%;
-    animation: fadeIn 0.5s ease-in-out;
-    z-index: 900;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    padding-top: 60px;
+    box-shadow: 0px 2px 20px 10px rgba(222, 222, 222, 0.25);
+    text-align: center;
 }
-.Cookies p{
+
+.cookies-aviso.activo {
+    display: block;
+}
+
+.cookies-aviso p{
     margin: 0 0 10px 0;
 }
-/* Animación de entrada */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-#btn-aceptar, #btn-rechazar {
+
+.cookies-aviso #btn-aceptar, #btn-rechazar {
     background-color: #ff7043;
     border: none;
     color: white;
@@ -222,4 +216,30 @@ main {
     margin: 10px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+
+.cookies-aviso .enlace {
+    color: #4DBFFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.cookies-aviso .enlace:hover {
+    text-decoration: underline;
+}
+
+.fondo-aviso-cookies {
+    display: none;
+    background: rgba(0, 0, 0, 0.20);
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.fondo-aviso-cookies.activo {
+    display: block;
 }
