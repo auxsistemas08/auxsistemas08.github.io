@@ -105,27 +105,30 @@
         <button id="btn-rechazar">Rechazar</button>
     </div>
 <script>
-    // Espera a que el DOM se cargue completamente
-    document.addEventListener("DOMContentLoaded", function() {
-        const cookiesBanner = document.querySelector('.Cookies');
-        const btnAceptar = document.getElementById('btn-aceptar');
-        const btnRechazar = document.getElementById('btn-rechazar');
+   document.addEventListener("DOMContentLoaded", function() {
+            const cookiesBanner = document.querySelector('.Cookies');
+            const btnAceptar = document.getElementById('btn-aceptar');
+            const btnRechazar = document.getElementById('btn-rechazar');
 
-        // Muestra el banner de cookies
-        cookiesBanner.style.display = 'block';
+            // Verifica si las cookies ya han sido aceptadas
+            const cookiesAceptadas = getCookie('cookies-aceptadas');
+            if (cookiesAceptadas === 'true') {
+                cookiesBanner.style.display = 'none'; // Oculta el banner
+            } else {
+                cookiesBanner.style.display = 'block'; // Muestra el banner
+            }
 
-        // Evento para aceptar las cookies
-        btnAceptar.addEventListener('click', () => {
-            cookiesBanner.style.display = 'none'; // Oculta el banner
-            // Aquí puedes agregar tu lógica para guardar la aceptación en una cookie
-        });
+            // Evento para aceptar las cookies
+            btnAceptar.addEventListener('click', () => {
+                setCookie('cookies-aceptadas', 'true', 365); // Establece la cookie
+                cookiesBanner.style.display = 'none'; // Oculta el banner
+            });
 
-        // Evento para rechazar las cookies
-        btnRechazar.addEventListener('click', () => {
-            cookiesBanner.style.display = 'none'; // Oculta el banner
-            // Aquí puedes agregar tu lógica para guardar el rechazo en una cookie
-        });
-    });
+            // Evento para rechazar las cookies
+            btnRechazar.addEventListener('click', () => {
+                setCookie('cookies-aceptadas', 'false', 365); // Establece la cookie
+                cookiesBanner.style.display = 'none'; // Oculta el banner
+            });
 </script>
     <footer>
         <p>&copy; 2023 LocalMarket. Todos los derechos reservados.</p>
